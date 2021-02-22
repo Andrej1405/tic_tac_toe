@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), transparent 1px), 
+                linear-gradient(90deg, rgba(0, 0, 0, 0.4), transparent 1px);
+    background-size: 30px 30px;
+}
+
+.tic_tac_toe__info-game, .tic_tac_toe__new-game {
+    text-align: center;
+}
+
+.tic_tac_toe__info-game {
+    height: 30px;
+}
+
+.tic_tac_toe__info {
+    color: royalblue;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.tic_tac_toe__game {
+    width: 360px;
+    height: 360px;
+    outline: 3px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px 0px;
+}
+
+.tic_tac_toe__field {
+    width: 120px;
+    height: 120px;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.tic_tac_toe__button {
+    border-radius: 3px;
+    padding: 10px 10px;
+    cursor: pointer;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.5);
+
+    -webkit-transition: All 0.5s ease;
+    -moz-transition: All 0.5s ease;
+    -o-transition: All 0.5s ease;
+    -ms-transition: All 0.5s ease;
+    transition: All 0.5s ease;
+
+}
+
+.tic_tac_toe__button:hover {
+    box-shadow: 0px 0px;
+}
+
+.circle {
+    stroke-dasharray: 314;
+    stroke-dashoffset: 314;
+    animation: draw 1s forwards;
+}
+
+.first {
+    stroke-dasharray: 142;
+    stroke-dashoffset: 142;
+    animation: draw 0.5s forwards;
+}
+
+.second {
+    stroke-dasharray: 142;
+    stroke-dashoffset: 142;
+    animation: draw 0.5s 0.5s forwards;
+}
+
+@keyframes draw {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+.winner {
+    background: rgba(58, 221, 180, 0.76);
+}
