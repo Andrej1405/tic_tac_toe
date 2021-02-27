@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Крестики-нолики</title>
     <link rel="stylesheet" href="./public/style/style.css">
+    <link rel="stylesheet" href="./public/style/menu-window.css">
 </head>
 <body>
     <div class="container">
@@ -25,11 +26,25 @@
                 <div class="tic_tac_toe__field"></div>
             </div>
             <div class="tic_tac_toe__new-game">
-                <button class="tic_tac_toe__button">Новая игра</button>
+                <button class="tic_tac_toe__button-new-game">Новая игра</button>
+                <button class="tic_tac_toe__button-opponent">Сменить соперника</button>
             </div>
         </div>
     </div>
 
-    <script src="./public/src/script.js"></script>
+    <div class="menu">
+        <h2 class="menu__header">Выберите соперника</h2>
+        <hr>
+        <div class="menu__form">
+            <form>
+                <p class="menu__opponent"><input type="radio" name="opponent" value="Компьютер" checked /><span class="menu__name">Компьютер</span></p>
+                <p class="menu__opponent"><input type="radio" name="opponent" value="Друг" /><span class="menu__name">Друг с этого компьютера</span></p>
+                <p class="menu__opponent"><input type="radio" name="opponent" value="Друг с другого компьютера" /><span class="menu__name">Друг с другого компьютера</span></p>
+            </form>
+            <button class="menu__select-mode">Выбрать</button>
+        </div>
+    </div>
+
+    <script src="./public/dist/bundle.js"></script>
 </body>
 </html>

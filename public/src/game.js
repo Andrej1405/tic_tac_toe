@@ -1,15 +1,9 @@
-const STEP_CROSS = 'cross'
-const STEP_CIRCLE = 'circle'
+import * as constants from './types/constants'
 
-const USER_CROSS = 'Ход крестика'
-const USER_CIRCLE = 'Ход кружочка'
-
-const WINNER_CROSS = 'Победил крестик'
-const WINNER_CIRCLE = 'Победил кружочек'
-
-class TicTacToe {
+export default class TicTacToe {
     game // Игровое поле
     gameWinner // Победитель
+    gameOpponent // Оппонент в игре (Компьютер, друг с этого компьютера, друг с другого компьютера)
     fields // Игровые клетки
     btnStart // Кнопка старта игры
     step // Чей ход
@@ -18,13 +12,14 @@ class TicTacToe {
     matrix // Матрица игрового поля
     winnerMatrix // матрица поля для победы
 
-    constructor() {
+    constructor(opponent) {
         this.game = document.querySelector('.tic_tac_toe__game')
+        this.gameOpponent = opponent
         this.fields = document.querySelectorAll('.tic_tac_toe__field')
-        this.btnStart = document.querySelector('.tic_tac_toe__button')
+        this.btnStart = document.querySelector('.tic_tac_toe__button-new-game')
         this.infoGame = document.querySelector('.tic_tac_toe__info')
 
-        this.step = STEP_CROSS
+        this.step = constants.STEP_CROSS
         this.circle = `<svg viewBox="0 0 120 120" class="circle">
                         	<circle r="50" cx="58" cy="58" stroke="blue" stroke-width="8" fill="none" stroke-linecap="round"/>
                        </svg>`
@@ -50,30 +45,65 @@ class TicTacToe {
             [0, 4, 8],
             [2, 4, 6],
         ]
+
+        document.querySelector('.container').classList.add('show')
     }
 
-    // Навешиваем события
+    /*
+     *  Прикрепляем события
+     * */
     addListeners = () => {
         this.btnStart.addEventListener('click', this.startGame)
     }
 
-    // Начало игры
+    /*
+     *  Начало игры
+     * */
     startGame = () => {
-        console.log('startGame')
-        // Обнуляем значения с прошлой игры
+        // Обнуляем результаты прошлой игры
         this.clearGame()
 
-        this.infoGame.textContent = `Игра началась. ${USER_CROSS}`
-        this.game.addEventListener('click', this.stepGamer)
+        this.infoGame.textContent = `Игра началась. ${constants.USER_CROSS}`
+        this.game.addEventListener('click', this.stepCurrentGamer)
     }
 
-    // Метод реализующий логику хода игрока
-    stepGamer = (event) => {
-        if (this.step === STEP_CROSS) this.stepCross(event.target)
-        else this.stepCircle(event.target)
+    /*
+     *  Метод, реализующий логику хода игроков
+     * */
+    stepCurrentGamer = (event) => {
+        let winner = false
+
+        switch (this.step) {
+            case constants.STEP_CROSS:
+                this.stepCross(event.target)
+
+                // Проверка на наличие победителя после текущего хода
+                winner = this.checkWinner(constants.STEP_CROSS)
+                if (winner) return
+
+                // Передаём ход игроку-кружочку
+                this.infoGame.textContent = constants.USER_CIRCLE
+                this.step = constants.STEP_CIRCLE
+                break
+            case constants.STEP_CIRCLE:
+                this.stepCircle(event.target)
+
+                // Проверка на наличие победителя после текущего хода
+                winner = this.checkWinner(constants.STEP_CIRCLE)
+                if (winner) return
+
+                // Передаём ход игроку-крестику
+                this.infoGame.textContent = constants.USER_CROSS
+                this.step = constants.STEP_CROSS
+                break
+            default:
+                console.error('Ошибка хода текущего игрока')
+        }
     }
 
-    // Метод хода кружка
+    /*
+     *  Метод хода игрока, играющего за кружок
+     * */
     stepCircle = (target) => {
         // Проверяем, использовалилось это поле для хода
         if (target.classList.contains('cross') || target.classList.contains('circle')) return
@@ -81,16 +111,11 @@ class TicTacToe {
         // Если нет - добавляем класс
         target.classList.add('circle')
         target.innerHTML = this.circle
-
-        // Проверка наличие победителя
-        const winner = this.checkWinner(STEP_CIRCLE)
-        if (winner) return
-        // Передаём ход крестику
-        this.infoGame.textContent = USER_CROSS
-        this.step = STEP_CROSS
     }
 
-    // Метод хода крестика
+    /*
+     *  Метод хода игрока, играющего за крестик
+     * */
     stepCross = (target) => {
         // Проверяем, использовалилось это поле для хода
         if (target.classList.contains('cross') || target.classList.contains('circle')) return
@@ -98,16 +123,11 @@ class TicTacToe {
         // Если нет - добавляем класс
         target.classList.add('cross')
         target.innerHTML = this.cross
-
-        // Проверка наличие победителя
-        const winner = this.checkWinner(STEP_CROSS)
-        if (winner) return
-        // Передаём ход кружочку
-        this.infoGame.textContent = USER_CIRCLE
-        this.step = STEP_CIRCLE
     }
 
-    // Метод проверяет наличие победителя после каждого хода
+    /*
+     *  Метод проверяет наличие победителя после каждого хода
+     * */
     checkWinner = (step) => {
         let win = false
 
@@ -123,28 +143,27 @@ class TicTacToe {
                 this.fields[massFields[1]].classList.add('winner')
                 this.fields[massFields[2]].classList.add('winner')
 
-                step === STEP_CROSS
-                    ? (this.infoGame.textContent = `Игра окончена. ${WINNER_CROSS}`)
-                    : (this.infoGame.textContent = `Игра окончена. ${WINNER_CIRCLE}`)
+                step === constants.STEP_CROSS
+                    ? (this.infoGame.textContent = `Игра окончена. ${constants.WINNER_CROSS}`)
+                    : (this.infoGame.textContent = `Игра окончена. ${constants.WINNER_CIRCLE}`)
                 win = true
             }
         })
 
-        if (win) this.game.removeEventListener('click', this.stepGamer)
+        if (win) this.game.removeEventListener('click', this.stepCurrentGamer)
         return win
     }
 
-    // Обнуляем результаты прошлой игры
+    /*
+     *  Обнуляем результаты прошлой игры
+     * */
     clearGame = () => {
         this.fields.forEach((field) => {
-            field.innerHTML = ``
-            field.classList = `tic_tac_toe__field`
+            field.innerHTML = ''
+            field.classList = 'tic_tac_toe__field'
         })
 
-        this.gameWinner = ``
-        this.step = STEP_CROSS
+        this.gameWinner = ''
+        this.step = constants.STEP_CROSS
     }
 }
-
-const ticTacToe = new TicTacToe()
-ticTacToe.addListeners()

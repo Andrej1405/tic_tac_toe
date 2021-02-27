@@ -15,6 +15,10 @@ body {
     background-size: 30px 30px;
 }
 
+.container {
+    display: none;
+}
+
 .tic_tac_toe__info-game, .tic_tac_toe__new-game {
     text-align: center;
 }
@@ -45,7 +49,7 @@ body {
     cursor: pointer;
 }
 
-.tic_tac_toe__button {
+.tic_tac_toe__button-new-game, .tic_tac_toe__button-opponent {
     border-radius: 3px;
     padding: 10px 10px;
     cursor: pointer;
@@ -59,7 +63,7 @@ body {
 
 }
 
-.tic_tac_toe__button:hover {
+.tic_tac_toe__button-new-game:hover, .tic_tac_toe__button-opponent:hover {
     box-shadow: 0px 0px;
 }
 
@@ -89,4 +93,12 @@ body {
 
 .winner {
     background: rgba(58, 221, 180, 0.76);
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
 }

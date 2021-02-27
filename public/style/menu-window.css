@@ -1,0 +1,33 @@
+.menu {
+    width: 430px;
+    background-color: rgb(255, 255, 255);
+    padding: 15px 15px 0px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 7px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -200px;
+    z-index: 99;
+}
+
+.menu__form {}
+
+.menu__header {
+    padding: 5px;
+}
+
+.menu__opponent {
+    text-align: left;
+    padding: 3px;
+}
+
+.menu__select-mode {
+    margin: 10px;
+    width: 125px;
+}
+
+.menu__name {
+    margin-left: 5px;
+}
