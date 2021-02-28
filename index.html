@@ -15,31 +15,31 @@
                 <span class="tic_tac_toe__info"></span>
             </div>
             <div class="tic_tac_toe__game">
-                <div class="tic_tac_toe__field"></div>
-                <div class="tic_tac_toe__field"></div>
-                <div class="tic_tac_toe__field"></div>
-                <div class="tic_tac_toe__field"></div>
-                <div class="tic_tac_toe__field"></div>
-                <div class="tic_tac_toe__field"></div>
-                <div class="tic_tac_toe__field"></div>
-                <div class="tic_tac_toe__field"></div>
-                <div class="tic_tac_toe__field"></div>
+                <div class="tic_tac_toe__field" seqNumber="0"></div>
+                <div class="tic_tac_toe__field" seqNumber="1"></div>
+                <div class="tic_tac_toe__field" seqNumber="2"></div>
+                <div class="tic_tac_toe__field" seqNumber="3"></div>
+                <div class="tic_tac_toe__field" seqNumber="4"></div>
+                <div class="tic_tac_toe__field" seqNumber="5"></div>
+                <div class="tic_tac_toe__field" seqNumber="6"></div>
+                <div class="tic_tac_toe__field" seqNumber="7"></div>
+                <div class="tic_tac_toe__field" seqNumber="8"></div>
             </div>
             <div class="tic_tac_toe__new-game">
                 <button class="tic_tac_toe__button-new-game">Новая игра</button>
-                <button class="tic_tac_toe__button-opponent">Сменить соперника</button>
+                <button class="tic_tac_toe__button-new-opponent">Сменить соперника</button>
             </div>
         </div>
     </div>
 
     <div class="menu">
-        <h2 class="menu__header">Выберите соперника</h2>
+        <h2 class="menu__header">Выберите тип игры</h2>
         <hr>
         <div class="menu__form">
             <form>
-                <p class="menu__opponent"><input type="radio" name="opponent" value="Компьютер" checked /><span class="menu__name">Компьютер</span></p>
-                <p class="menu__opponent"><input type="radio" name="opponent" value="Друг" /><span class="menu__name">Друг с этого компьютера</span></p>
-                <p class="menu__opponent"><input type="radio" name="opponent" value="Друг с другого компьютера" /><span class="menu__name">Друг с другого компьютера</span></p>
+                <p class="menu__opponent"><input type="radio" name="opponent" value="computer" checked /><span class="menu__name">Человек vs Компьютер</span></p>
+                <p class="menu__opponent"><input type="radio" name="opponent" value="friend" /><span class="menu__name">Человек vs Человек</span></p>
+                <p class="menu__opponent"><input type="radio" name="opponent" value="" /><span class="menu__name">Компьютер vs Компьютер</span></p>
             </form>
             <button class="menu__select-mode">Выбрать</button>
         </div>

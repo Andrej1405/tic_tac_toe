@@ -49,7 +49,7 @@ body {
     cursor: pointer;
 }
 
-.tic_tac_toe__button-new-game, .tic_tac_toe__button-opponent {
+.tic_tac_toe__button-new-game, .tic_tac_toe__button-new-opponent {
     border-radius: 3px;
     padding: 10px 10px;
     cursor: pointer;
@@ -63,7 +63,7 @@ body {
 
 }
 
-.tic_tac_toe__button-new-game:hover, .tic_tac_toe__button-opponent:hover {
+.tic_tac_toe__button-new-game:hover, .tic_tac_toe__button-new-opponent:hover {
     box-shadow: 0px 0px;
 }
 
