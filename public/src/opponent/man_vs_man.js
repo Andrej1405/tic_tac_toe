@@ -1,9 +1,13 @@
 import TicTacToe from '../game'
 import * as constants from '../types/constants'
+import imgUser from '../img/man.png'
 
 export default class OpponentFriend extends TicTacToe {
     constructor() {
         super()
+
+        this.imgOpponent.src = imgUser
+        this.imgUser.src = imgUser
     }
 
     /*

@@ -27,3 +27,8 @@ export const FIELD_NUMBER_EIGHTEEN = 8
 export const ROW_MATRIX_ZERO = 0
 export const ROW_MATRIX_ONE = 1
 export const ROW_MATRIX_TWO = 2
+
+// Моды игры
+export const COMPUTER_VS_COMPUTER ='CvsC'
+export const MAN_VS_COMPUTER = 'MvsC'
+export const MAN_VS_MAN = 'MvsM'

@@ -12,6 +12,8 @@ export default class TicTacToe {
     matrix // Матрица игрового поля
     currentGameMatrix // Матрица игрового поля на текущей стадии игры
     winnerMatrix // матрица поля для победы
+    imgOpponent // изображение оппонента
+    imgUser // ихображение игрока
 
     constructor() {
         this.game = document.querySelector('.tic_tac_toe__game')
@@ -20,6 +22,8 @@ export default class TicTacToe {
 
         this.btnStart = document.querySelector('.tic_tac_toe__button-new-game')
         this.btnNewOpponent = document.querySelector('.tic_tac_toe__button-new-opponent')
+        this.imgOpponent = document.querySelector('.tic_tac_toe__img-opponent')
+        this.imgUser = document.querySelector('.tic_tac_toe__img-user')
 
         this.circle = `<svg viewBox="0 0 120 120" class="circle">
                         	<circle r="50" cx="58" cy="58" stroke="blue" stroke-width="8" fill="none" stroke-linecap="round"/>
@@ -39,11 +43,7 @@ export default class TicTacToe {
             [6, 7, 8],
         ]
 
-        this.currentGameMatrix = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-        ]
+        this.currentGameMatrix = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
         this.winnerMatrix = [
             [0, 1, 2],
@@ -55,6 +55,30 @@ export default class TicTacToe {
             [0, 4, 8],
             [2, 4, 6],
         ]
+
+        this.attachEvents()
+    }
+
+    /*
+     *   Навешиваем базовые события
+     * */
+    attachEvents = () => {
+        this.imgUser.addEventListener('click', () => {
+            const fullRound = 360
+            const startRotate = 0
+            const turnRotate = 5
+
+            let rotate = startRotate
+
+            const timer = setInterval(() => {
+                rotate += turnRotate
+                this.imgUser.style.transform = `rotate(${rotate}deg)`
+
+                if (rotate === fullRound) {
+                    clearInterval(timer)
+                }
+            }, 10)
+        })
     }
 
     /*
@@ -112,10 +136,6 @@ export default class TicTacToe {
         this.gameWinner = ''
         this.turn = constants.FIRST_TURN
         this.step = constants.STEP_CROSS
-        this.currentGameMatrix = [
-            0, 1, 2,
-            3, 4, 5,
-            6, 7, 8,
-        ]
+        this.currentGameMatrix = [0, 1, 2, 3, 4, 5, 6, 7, 8]
     }
 }

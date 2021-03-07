@@ -8,13 +8,12 @@ module.exports = (env, argv) => {
             entry: './public/src',
         },
     ]
-
-    // Сторонние библиотеки (без типов!!! только для компиляции)
     const vendors = ['@babel/polyfill']
 
     return {
         entry: () => {
-            let entry = {}
+            const entry = {}
+            
             entryPoints.forEach((v) => (entry[v.entry] = [...vendors, v.entry + '/index.js']))
             return entry
         },
@@ -36,6 +35,13 @@ module.exports = (env, argv) => {
                 {
                     test: /\.css$/,
                     use: ['style-loader', 'css-loader', 'less-loader'],
+                },
+                {
+                    test: /\.(woff|woff2|eot|ttf|otf|svg|png|gif|jpg|jpeg)$/,
+                    loader: 'file-loader',
+                    options: {
+                        outputPath: './public/dist',
+                    },
                 },
             ],
         },

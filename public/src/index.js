@@ -1,5 +1,7 @@
-import OpponentFriend from './opponent/friend'
-import OpponentComputer from './opponent/computer'
+import OpponentFriend from './opponent/man_vs_man'
+import OpponentComputer from './opponent/man_vs_computer'
+import ComputerVSComputer from './opponent/computer_vs_computer'
+import * as constants from './types/constants'
 
 const menu = document.querySelector('.menu')
 const selectMode = document.querySelector('.menu__select-mode')
@@ -28,11 +30,14 @@ export function startTicTacToe() {
 
     if (mode) {
         switch (mode) {
-            case 'computer':
+            case constants.MAN_VS_COMPUTER:
                 tic_tac_toe = new OpponentComputer()
                 break
-            case 'friend':
+            case constants.MAN_VS_MAN:
                 tic_tac_toe = new OpponentFriend()
+                break
+            case constants.COMPUTER_VS_COMPUTER:
+                tic_tac_toe = new ComputerVSComputer()
                 break
             default:
                 tic_tac_toe = new OpponentFriend()

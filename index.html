@@ -14,6 +14,9 @@
             <div class="tic_tac_toe__info-game">
                 <span class="tic_tac_toe__info"></span>
             </div>
+            <div class="tic_tac_toe__opponent">
+                <img class="tic_tac_toe__img-opponent" title="Это ваш оппонент" alt="Изображение оппонента" height="40px" width="40px">
+            </div>
             <div class="tic_tac_toe__game">
                 <div class="tic_tac_toe__field" seqNumber="0"></div>
                 <div class="tic_tac_toe__field" seqNumber="1"></div>
@@ -24,6 +27,9 @@
                 <div class="tic_tac_toe__field" seqNumber="6"></div>
                 <div class="tic_tac_toe__field" seqNumber="7"></div>
                 <div class="tic_tac_toe__field" seqNumber="8"></div>
+            </div>
+            <div class="tic_tac_toe__user">
+                <img class="tic_tac_toe__img-user" title="Это вы" alt="Ваше изображение" height="40px" width="40px">
             </div>
             <div class="tic_tac_toe__new-game">
                 <button class="tic_tac_toe__button-new-game">Новая игра</button>
@@ -37,9 +43,9 @@
         <hr>
         <div class="menu__form">
             <form>
-                <p class="menu__opponent"><input type="radio" name="opponent" value="computer" checked /><span class="menu__name">Человек vs Компьютер</span></p>
-                <p class="menu__opponent"><input type="radio" name="opponent" value="friend" /><span class="menu__name">Человек vs Человек</span></p>
-                <p class="menu__opponent"><input type="radio" name="opponent" value="" /><span class="menu__name">Компьютер vs Компьютер</span></p>
+                <p class="menu__opponent"><input type="radio" name="opponent" value="MvsC" checked /><span class="menu__name">Человек vs Компьютер</span></p>
+                <p class="menu__opponent"><input type="radio" name="opponent" value="MvsM" /><span class="menu__name">Человек vs Человек</span></p>
+                <p class="menu__opponent"><input type="radio" name="opponent" value="CvsC" /><span class="menu__name">Компьютер vs Компьютер</span></p>
             </form>
             <button class="menu__select-mode">Выбрать</button>
         </div>

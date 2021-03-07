@@ -19,7 +19,10 @@ body {
     display: none;
 }
 
-.tic_tac_toe__info-game, .tic_tac_toe__new-game {
+.tic_tac_toe__info-game, 
+.tic_tac_toe__new-game, 
+.tic_tac_toe__opponent, 
+.tic_tac_toe__user {
     text-align: center;
 }
 
@@ -61,6 +64,14 @@ body {
     -ms-transition: All 0.5s ease;
     transition: All 0.5s ease;
 
+}
+
+.tic_tac_toe__user, .tic_tac_toe__opponent {
+    margin: 15px;
+}
+
+.tic_tac_toe__img-user, .tic_tac_toe__img-opponent {
+    cursor: pointer;
 }
 
 .tic_tac_toe__button-new-game:hover, .tic_tac_toe__button-new-opponent:hover {

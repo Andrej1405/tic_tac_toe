@@ -1,10 +1,14 @@
 import TicTacToe from '../game'
 import * as constants from '../types/constants'
+import imgComputer from '../img/computer.jpg'
 
-export default class OpponentComputer extends TicTacToe {
+export default class ComputerVSComputer extends TicTacToe {
     constructor() {
         super()
         this.event = new MouseEvent('click', { bubbles: true })
+
+        this.imgOpponent.src = imgComputer
+        this.imgUser.src = imgComputer
     }
 
     /*
@@ -24,6 +28,9 @@ export default class OpponentComputer extends TicTacToe {
 
         this.infoGame.textContent = `Игра началась. ${constants.USER_CROSS}`
         this.game.addEventListener('click', this.stepCurrentGamer)
+
+        // Вызываем логику хода компьютера
+        this.computerLogic()
     }
 
     /*
@@ -55,9 +62,6 @@ export default class OpponentComputer extends TicTacToe {
 
         const seqNumber = target.getAttribute('seqNumber')
         this.currentGameMatrix[Number(seqNumber)] = constants.VALUE_CROSS
-
-        // После нашего хода вызываем логику хода компьютера
-        setTimeout(this.computerLogic, 1000)
     }
 
     /*
@@ -81,6 +85,7 @@ export default class OpponentComputer extends TicTacToe {
     computerLogic = () => {
         let isCompletedTurn = false
 
+        // Проверяет на наличие выигрышных комбинаций у компьютера и оппонента
         for (let massFields of this.winnerMatrix) {
             const oneValueField = this.currentGameMatrix[massFields[0]]
             const twoValueField = this.currentGameMatrix[massFields[1]]
@@ -110,14 +115,7 @@ export default class OpponentComputer extends TicTacToe {
             if (isCompletedTurn) return
         }
 
-        const centrField = this.currentGameMatrix[constants.FIELD_NUMBER_FOUR]
-        if (centrField !== constants.VALUE_CROSS && centrField !== constants.VALUE_CIRCLE) {
-            this.fields[constants.FIELD_NUMBER_FOUR].dispatchEvent(this.event)
-            isCompletedTurn = true
-            return
-        }
-
-        
+        // Занимает любое другое оставшееся свободное место
         for (let indexElement of this.currentGameMatrix) {
             if (indexElement !== constants.VALUE_CIRCLE && indexElement !== constants.VALUE_CROSS) {
                 this.fields[indexElement].dispatchEvent(this.event)
@@ -156,6 +154,8 @@ export default class OpponentComputer extends TicTacToe {
                 // Передаём ход игроку-кружочку
                 this.infoGame.textContent = constants.USER_CIRCLE
                 this.step = constants.STEP_CIRCLE
+
+                setTimeout(this.computerLogic, 1500)
                 break
             case constants.STEP_CIRCLE:
                 this.stepCircle(event.target)
@@ -177,6 +177,8 @@ export default class OpponentComputer extends TicTacToe {
                 // Передаём ход игроку-крестику
                 this.infoGame.textContent = constants.USER_CROSS
                 this.step = constants.STEP_CROSS
+
+                setTimeout(this.computerLogic, 1500)
                 break
             default:
                 console.error('Ошибка хода текущего игрока')
