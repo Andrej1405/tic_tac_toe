@@ -1,56 +1,84 @@
+{{define "index"}}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Крестики-нолики</title>
-    <link rel="stylesheet" href="./public/style/style.css">
-    <link rel="stylesheet" href="./public/style/menu-window.css">
-</head>
-<body>
-    <div class="container">
-        <div class="tic_tac_toe">
-            <div class="tic_tac_toe__info-game">
-                <span class="tic_tac_toe__info"></span>
-            </div>
-            <div class="tic_tac_toe__opponent">
-                <img class="tic_tac_toe__img-opponent" title="Это ваш оппонент" alt="Изображение оппонента" height="40px" width="40px">
-            </div>
-            <div class="tic_tac_toe__game">
-                <div class="tic_tac_toe__field" seqNumber="0"></div>
-                <div class="tic_tac_toe__field" seqNumber="1"></div>
-                <div class="tic_tac_toe__field" seqNumber="2"></div>
-                <div class="tic_tac_toe__field" seqNumber="3"></div>
-                <div class="tic_tac_toe__field" seqNumber="4"></div>
-                <div class="tic_tac_toe__field" seqNumber="5"></div>
-                <div class="tic_tac_toe__field" seqNumber="6"></div>
-                <div class="tic_tac_toe__field" seqNumber="7"></div>
-                <div class="tic_tac_toe__field" seqNumber="8"></div>
-            </div>
-            <div class="tic_tac_toe__user">
-                <img class="tic_tac_toe__img-user" title="Это вы" alt="Ваше изображение" height="40px" width="40px">
-            </div>
-            <div class="tic_tac_toe__new-game">
-                <button class="tic_tac_toe__button-new-game">Новая игра</button>
-                <button class="tic_tac_toe__button-new-opponent">Сменить соперника</button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Крестики-нолики</title>
+        <link type="text/css" rel="stylesheet" href="/public/style/style.css" />
+        <link type="text/css" rel="stylesheet" href="/public/style/menu-window.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="tic_tac_toe">
+                <div class="tic_tac_toe__info-game">
+                    <span class="tic_tac_toe__info"></span>
+                </div>
+                <div class="tic_tac_toe__opponent">
+                    <img
+                        class="tic_tac_toe__img-opponent"
+                        title="Это ваш оппонент"
+                        alt="Изображение оппонента"
+                        height="40px"
+                        width="40px"
+                    />
+                </div>
+                <div class="tic_tac_toe__game">
+                    <div class="tic_tac_toe__field" seqNumber="0"></div>
+                    <div class="tic_tac_toe__field" seqNumber="1"></div>
+                    <div class="tic_tac_toe__field" seqNumber="2"></div>
+                    <div class="tic_tac_toe__field" seqNumber="3"></div>
+                    <div class="tic_tac_toe__field" seqNumber="4"></div>
+                    <div class="tic_tac_toe__field" seqNumber="5"></div>
+                    <div class="tic_tac_toe__field" seqNumber="6"></div>
+                    <div class="tic_tac_toe__field" seqNumber="7"></div>
+                    <div class="tic_tac_toe__field" seqNumber="8"></div>
+                </div>
+                <div class="tic_tac_toe__user">
+                    <img
+                        class="tic_tac_toe__img-user"
+                        title="Это вы"
+                        alt="Ваше изображение"
+                        height="40px"
+                        width="40px"
+                    />
+                </div>
+                <div class="tic_tac_toe__new-game">
+                    <button class="tic_tac_toe__button-new-game">Новая игра</button>
+                    <button class="tic_tac_toe__button-new-opponent">Сменить соперника</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="menu">
-        <h2 class="menu__header">Выберите тип игры</h2>
-        <hr>
-        <div class="menu__form">
-            <form>
-                <p class="menu__opponent"><input type="radio" name="opponent" value="MvsC" checked /><span class="menu__name">Человек vs Компьютер</span></p>
-                <p class="menu__opponent"><input type="radio" name="opponent" value="MvsM" /><span class="menu__name">Человек vs Человек</span></p>
-                <p class="menu__opponent"><input type="radio" name="opponent" value="CvsC" /><span class="menu__name">Компьютер vs Компьютер</span></p>
-            </form>
-            <button class="menu__select-mode">Выбрать</button>
+        <div class="menu">
+            <h2 class="menu__header">Выберите тип игры</h2>
+            <hr />
+            <div class="menu__form">
+                <form>
+                    <p class="menu__opponent">
+                        <input type="radio" name="opponent" value="MvsC" checked /><span class="menu__name"
+                            >Человек vs Компьютер</span
+                        >
+                    </p>
+                    <p class="menu__opponent">
+                        <input type="radio" name="opponent" value="MvsM" /><span class="menu__name"
+                            >Человек vs Человек</span
+                        >
+                    </p>
+                    <p class="menu__opponent">
+                        <input type="radio" name="opponent" value="CvsC" /><span class="menu__name"
+                            >Компьютер vs Компьютер</span
+                        >
+                    </p>
+                </form>
+                <button class="menu__select-mode">Выбрать</button>
+            </div>
         </div>
-    </div>
 
-    <script src="./public/dist/bundle.js"></script>
-</body>
+        <script type="text/javascript" src="/public/dist/bundle.js"></script>
+    </body>
 </html>
+
+{{end}}
